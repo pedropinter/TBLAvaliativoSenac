@@ -1,0 +1,90 @@
+/* Aplica estilo base para todos os elementos:
+   remove margens e paddings padrões,
+   define uma família de fontes serifadas clássicas,
+   e adiciona uma transição suave de 0.5s para mudanças visuais */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transition: 0.5s;
+}
+
+/* Estiliza o corpo da página:
+   fundo azul claro */
+body {
+  background: #E0F7FA;
+}
+
+/* Define altura do elemento main para 71% da altura da viewport,
+   ajudando a controlar o layout vertical da página */
+main {
+  height: 71vh;
+}
+
+/* Cartão principal (classe cartao1):
+   usa flexbox para dispor os elementos em linha,
+   espaço entre eles (justify-content: space-between),
+   alinha os itens verticalmente no centro,
+   adiciona espaçamento interno grande de 10vh,
+   e permite quebra de linha (wrap) para telas menores */
+.cartao1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10vh;
+  flex-wrap: wrap;
+}
+
+/* Container do texto:
+   ocupa flexívelmente o espaço disponível (flex: 1),
+   adiciona espaçamento à direita para separar do lado da imagem,
+   tamanho da fonte proporcional à altura da viewport (3vh) */
+#texto {
+  flex: 1;
+  padding-right: 20px;
+  font-size: 3vh;
+}
+
+/* Container da imagem:
+   também ocupa espaço flexível (flex: 1),
+   usa flexbox para centralizar a imagem horizontalmente */
+#imagem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Imagem principal (id rosto):
+   largura fixa proporcional à altura da viewport (55vh),
+   bordas arredondadas com raio de 5% */
+#rosto {
+  width: 55vh;
+  border-radius: 5%;
+}
+
+/* Botão padrão:
+   margem à esquerda grande para deslocar (200px),
+   bordas arredondadas para visual suave,
+   fundo transparente (nenhuma cor),
+   largura e altura fixas para tamanho consistente,
+   borda fina preta,
+   margem superior para espaçamento,
+   alinhamento próprio para centralizar verticalmente dentro do container flex */
+button {
+  margin-left: 200px;
+  border-radius: 20px;
+  background: none;
+  width: 250px;
+  height: 100px;
+  border: 1px solid black;
+  margin-top: 10px;
+  align-self: center;
+}
+
+/* Efeito hover para o botão:
+   aumenta o tamanho do botão em 10% (escala 1.1),
+   muda o cursor para pointer para indicar interatividade */
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

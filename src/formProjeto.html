@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Define a codificação da página como UTF-8 -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Permite que a página seja responsiva em dispositivos móveis -->
+
+    <title>Form Projeto</title>
+    <!-- Título da página -->
+
+    <link rel="stylesheet" href="../css/headerFooter.css" type="text/css">
+    <!-- Link para o CSS do cabeçalho e rodapé -->
+
+    <link rel="stylesheet" href="../css/formProjeto.css">
+    <!-- Link para o CSS específico do formulário de projeto -->
+</head>
+
+<body>
+    <header>
+        <!-- Cabeçalho com logo e menu de navegação -->
+        <img id="logo" src="../assets/logo.png" alt="LOGO">
+        <nav id="menu-opcoes">
+            <a class="menu-opcoes" href="../index.html">Home</a>
+            <a class="menu-opcoes" href="formProjeto.html">Criar Projeto</a>
+            <a class="menu-opcoes" href="formTarefa.html">Criar Tarefa</a>
+            <a class="menu-opcoes" href="visualizar.html">Visualizar</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Conteúdo principal da página -->
+        <h1 class="titulo">
+            Crie um Projeto:
+        </h1>
+        <br />
+
+        <form id="formProjeto">
+            <!-- Formulário para criação de um novo projeto -->
+
+            <input type="text" id="nomeProjeto" placeholder="Nome do Projeto" required>
+            <!-- Campo para nome do projeto, obrigatório -->
+
+            <input type="text" id="descricaoProjeto" placeholder="Descrição" required>
+            <!-- Campo para descrição do projeto, obrigatório -->
+
+            <input type="text" id="responsavelProjeto" placeholder="Responsável" required>
+            <!-- Campo para responsável pelo projeto, obrigatório -->
+
+            <input type="text" id="tipoProjeto" placeholder="Tipo Produto" required>
+            <!-- Campo para tipo do projeto, obrigatório -->
+
+            <input type="text" id="statusProjeto" placeholder="Status" required>
+            <!-- Campo para status do projeto, obrigatório -->
+
+            <input type="color" id="cor" name="cor" value="#ffffff" />
+            <!-- Seletor de cor para o projeto, com valor padrão branco -->
+
+            <button type="submit">Salvar Projeto</button>
+            <!-- Botão para enviar o formulário -->
+        </form>
+    </main>
+
+    <footer>
+        <!-- Rodapé com direitos autorais e redes sociais -->
+        <p>&copy; 2025 Pedro Pinter, Murilo Mazotti, João Dias e Pedro Menezes. Todos os direitos reservados.</p>
+        <div class="redes-sociais">
+            <a href="https://www.linkedin.com/in/pedro-henrique-pinter/"><img class="imglink" src="../assets/linkedin.png"></a>
+            <a href="https://github.com/pedropinter"><img class="imglink" src="../assets/whatsapp.png"></a>
+            <!-- Ícone WhatsApp está no link do GitHub, pode ser um erro de imagem -->
+            <a href="https://www.instagram.com/phpinter/"><img class="imglink" src="../assets/instagram.png"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Evento para interceptar o envio do formulário e processar via JavaScript
+        document.getElementById('formProjeto').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Previne o comportamento padrão do formulário (recarregar a página)
+
+            // Coleta os valores dos campos, removendo espaços em branco extras
+            const nome = document.getElementById('nomeProjeto').value.trim();
+            const descricao = document.getElementById('descricaoProjeto').value.trim();
+            const responsavel = document.getElementById('responsavelProjeto').value.trim();
+            const tipo = document.getElementById('tipoProjeto').value.trim();
+            const status = document.getElementById('statusProjeto').value.trim();
+            const cor = document.getElementById('cor').value;
+
+            // Validação simples: verifica se algum campo obrigatório está vazio
+            if (!nome || !descricao || !responsavel || !tipo || !status) {
+                alert("Preencha todos os campos obrigatórios!");
+                return; // Encerra a função para o usuário preencher os campos
+            }
+
+            // Cria objeto com os dados do projeto
+            const projeto = {
+                nome,
+                descricao,
+                responsavel,
+                tipo,
+                status,
+                cor
+            };
+
+            // Busca o array de projetos já salvo no localStorage ou cria um novo array vazio
+            const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
+            // Adiciona o novo projeto ao array
+            projetos.push(projeto);
+            // Atualiza o localStorage com o array atualizado convertido para string JSON
+            localStorage.setItem('projetos', JSON.stringify(projetos));
+
+            // Alerta o usuário sobre o sucesso
+            alert('Projeto salvo com sucesso!');
+            // Limpa os campos do formulário para nova inserção
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>

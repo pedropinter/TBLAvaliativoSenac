@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Define a codificação dos caracteres para UTF-8 -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Permite responsividade em dispositivos móveis -->
+    
+    <title>Form Tarefa</title>
+    <!-- Título da página -->
+
+    <link rel="stylesheet" href="../css/headerFooter.css" type="text/css">
+    <!-- CSS para o cabeçalho e rodapé -->
+
+    <link rel="stylesheet" href="../css/formTarefa.css">
+    <!-- CSS específico para o formulário da tarefa -->
+</head>
+
+<body>
+    <header>
+        <!-- Cabeçalho com logo e menu de navegação -->
+        <img id="logo" src="../assets/logo.png" alt="LOGO">
+        <nav id="menu-opcoes">
+            <a class="menu-opcoes" href="../index.html">Home</a>
+            <a class="menu-opcoes" href="formProjeto.html">Criar Projeto</a>
+            <a class="menu-opcoes" href="formTarefa.html">Criar Tarefa</a>
+            <a class="menu-opcoes" href="visualizar.html">Visualizar</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Conteúdo principal da página -->
+        <h1 class="titulo">Crie uma Tarefa:</h1>
+        <br />
+
+        <form id="formTarefa">
+            <!-- Formulário para criação de tarefas -->
+            <input type="text" id="nomeTarefa" placeholder="Nome da Tarefa" required>
+            <!-- Campo para nome da tarefa, obrigatório -->
+
+            <input type="text" id="descricaoTarefa" placeholder="Descrição" required>
+            <!-- Campo para descrição da tarefa, obrigatório -->
+
+            <input type="text" id="responsavelTarefa" placeholder="Responsável" required>
+            <!-- Campo para nome do responsável, obrigatório -->
+
+            <button type="submit">Salvar Tarefa</button>
+            <!-- Botão para enviar o formulário -->
+        </form>
+    </main>
+
+    <footer>
+        <!-- Rodapé com direitos autorais e redes sociais -->
+        <p>&copy; 2025 Pedro Pinter, Murilo Mazotti, João Dias e Pedro Menezes. Todos os direitos reservados.</p>
+        <div class="redes-sociais">
+            <a href="https://www.linkedin.com/in/pedro-henrique-pinter/"><img class="imglink" src="../assets/linkedin.png"></a>
+            <a href="https://github.com/pedropinter"><img class="imglink" src="../assets/whatsapp.png"></a>
+            <!-- Ícone do WhatsApp para o GitHub, poderia ser corrigido -->
+            <a href="https://www.instagram.com/phpinter/"><img class="imglink" src="../assets/instagram.png"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Quando o formulário for enviado, executa esta função
+        document.getElementById('formTarefa').addEventListener('submit', function (e) {
+            e.preventDefault(); 
+            // Previne o comportamento padrão de recarregar a página
+
+            // Captura os valores digitados e remove espaços extras
+            const nome = document.getElementById('nomeTarefa').value.trim();
+            const descricao = document.getElementById('descricaoTarefa').value.trim();
+            const responsavel = document.getElementById('responsavelTarefa').value.trim();
+
+            // Validação simples para garantir que todos os campos estão preenchidos
+            if (!nome || !descricao || !responsavel) {
+                alert('Preencha todos os campos!');
+                return; // Sai da função se algum campo estiver vazio
+            }
+
+            // Cria um objeto tarefa com os dados do formulário
+            const tarefa = { nome, descricao, responsavel };
+
+            // Pega a lista atual de tarefas do localStorage, ou cria uma nova lista vazia
+            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            // Adiciona a nova tarefa à lista
+            tarefas.push(tarefa);
+            // Salva a lista atualizada no localStorage (em formato JSON)
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+
+            // Mostra uma mensagem de sucesso para o usuário
+            alert('Tarefa salva com sucesso!');
+            // Limpa os campos do formulário para uma nova entrada
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>

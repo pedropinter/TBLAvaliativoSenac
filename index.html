@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Define o tipo de documento como HTML5 -->
+<html lang="pt-br">
+<!-- Início do documento HTML, com idioma definido como português do Brasil -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Define a codificação de caracteres como UTF-8, permitindo acentuação -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Torna o layout responsivo em dispositivos móveis -->
+    
+    <title>Home</title>
+    <!-- Título da aba do navegador -->
+    
+    <link rel="stylesheet" href="./css/headerFooter.css" type="text/css">
+    <!-- Importa o CSS para estilização do cabeçalho e rodapé -->
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Importa o CSS principal para o restante da página -->
+</head>
+
+<body>
+    <!-- Início do corpo da página -->
+
+    <header>
+        <!-- Cabeçalho do site -->
+        
+        <img id="logo" src="../assets/logo.png" alt="LOGO">
+        <!-- Logo da página, localizada uma pasta acima da raiz do projeto -->
+
+        <nav id="menu-opcoes">
+            <!-- Menu de navegação com links para outras páginas do site -->
+            <a class="menu-opcoes" href="index.html">Home</a>
+            <a class="menu-opcoes" href="./src/formProjeto.html">Criar Projeto</a>
+            <a class="menu-opcoes" href="./src/formTarefa.html">Criar Tarefa</a>
+            <a class="menu-opcoes" href="./src/visualizar.html">Visualizar</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Conteúdo principal da página -->
+
+        <section class="cartao1">
+            <!-- Seção estilizada com a classe 'cartao1' -->
+
+            <div id="texto">
+                <!-- Texto explicativo sobre o site -->
+                <h1>Order Minds</h1>
+                <p>
+                    Nosso site foi criado com um objetivo simples, mas poderoso: ajudar pessoas a organizarem melhor suas tarefas e projetos. 
+                    Sabemos que a rotina pode ser corrida, e manter o controle de prazos, atividades e responsabilidades nem sempre é fácil. 
+                    Pensando nisso, desenvolvemos uma plataforma intuitiva e prática, ideal para estudantes, profissionais e equipes de trabalho.
+                    <br>
+                    Nosso compromisso é com a sua produtividade e organização. Com este site, você terá controle total sobre suas metas, com simplicidade e eficiência.
+                </p>
+            </div>
+
+            <div id="imagem">
+                <!-- Imagem ilustrativa sobre a organização -->
+                <img id="rosto" src="./assets/tabela.png" alt="">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Rodapé da página -->
+
+        <p>&copy; 2025 Pedro Pinter, Murilo Mazotti, João Dias e Pedro Menezes. Todos os direitos reservados.</p>
+        <!-- Direitos autorais -->
+
+        <div class="redes-sociais">
+            <!-- Ícones com links para redes sociais dos autores -->
+            <a href="https://www.linkedin.com/in/pedro-henrique-pinter/">
+                <img class="imglink" src="../assets/linkedin.png">
+            </a>
+            <a href="https://github.com/pedropinter">
+                <img class="imglink" src="../assets/whatsapp.png">
+                <!-- OBS: Esta imagem deveria representar o GitHub, mas é um ícone do WhatsApp -->
+            </a>
+            <a href="https://www.instagram.com/phpinter/">
+                <img class="imglink" src="../assets/instagram.png">
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+/* Reset básico e fonte padrão com transição para suavizar mudanças */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: 0.5s;
+}
+
+/* Configura o html e body para ocupar 100% da altura e usar flexbox em coluna */
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #E0F7FA; /* fundo azul claro */
+}
+
+/* Main ocupa o espaço disponível entre header e footer e centraliza seu conteúdo */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* centraliza horizontalmente */
+    justify-content: center; /* centraliza verticalmente */
+    padding: 1rem;
+}
+
+/* Formulário centralizado, com largura máxima e layout em coluna */
+form {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Labels com largura total, alinhados à esquerda, negrito e espaçamento inferior */
+label {
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding-left: 2px;
+    text-align: left;
+}
+
+/* Inputs e textareas com largura total, altura fixa, borda arredondada e espaçamento */
+input,
+textarea {
+    width: 100%;
+    height: 5vh;
+    border: 0.5px solid silver;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box; /* inclui padding na largura total */
+}
+
+/* Botão arredondado, largura fixa, borda preta e alinhado ao centro */
+button {
+    border-radius: 20px;
+    background: none;
+    width: 120px;
+    height: 35px;
+    border: 1px solid black;
+    margin-top: 10px;
+    align-self: center;
+}
+
+/* Efeito hover no botão: aumento e cursor pointer */
+button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Estilo para títulos principais, centralizados, com tamanho grande e cor preta */
+.titulo {
+    text-align: center;
+    font-size: 2.5rem;
+    color: black;
+    margin: 30px 0;
+}
+
+/* Container para a grade de aulas usando grid responsivo.
+   A grade cria colunas que tem no mínimo 180px e se adaptam à largura disponível.
+   Espaçamento entre os cartões e padding lateral */
+.grade-aulas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 0 10%;
+    margin-bottom: 40px;
+}
+
+/* Cartões individuais das aulas:
+   fundo cinza escuro,
+   padding confortável,
+   cantos arredondados,
+   texto centralizado,
+   cursor pointer para indicar que é clicável,
+   transição suave para o efeito hover */
+.aula {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover no cartão: escurece um pouco para dar feedback visual */
+.aula:hover {
+    background-color: #3a3a3a;
+}
+
+/* Título dentro do cartão:
+   cor vermelha forte,
+   negrito,
+   tamanho médio,
+   espaçamento inferior para separar do conteúdo */
+.titulo-aula {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Conteúdo oculto inicialmente (exercícios dentro do cartão):
+   layout em coluna,
+   espaçamento entre os links,
+   margem superior para afastar do título */
+.exercicios {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+/* Links dentro do conteúdo oculto:
+   cor azul vibrante,
+   sem sublinhado,
+   tamanho de fonte reduzido */
+.exercicios a {
+    color: deepskyblue;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Quando o cartão está ativo (clicado), mostra os detalhes (exercícios) */
+.aula.ativa .exercicios {
+    display: flex;
+}

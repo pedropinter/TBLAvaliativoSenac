@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <!-- Define a codificação de caracteres para UTF-8 -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Torna a página responsiva em dispositivos móveis -->
+    
+    <title>Visualizar</title>
+    <!-- Título da página -->
+    
+    <link rel="stylesheet" href="../css/headerFooter.css" />
+    <!-- Estilos para o cabeçalho e rodapé -->
+    
+    <link rel="stylesheet" href="../css/visualizar.css" />
+    <!-- Estilos específicos para esta página -->
+</head>
+<body>
+    <header>
+        <!-- Cabeçalho do site -->
+        
+        <img id="logo" src="../assets/logo.png" alt="LOGO">
+        <!-- Logo da página -->
+        
+        <nav id="menu-opcoes">
+            <!-- Menu de navegação -->
+            <a class="menu-opcoes" href="../index.html">Home</a>
+            <a class="menu-opcoes" href="formProjeto.html">Criar Projeto</a>
+            <a class="menu-opcoes" href="formTarefa.html">Criar Tarefa</a>
+            <a class="menu-opcoes" href="visualizar.html">Visualizar</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Conteúdo principal da página -->
+
+        <h2 class="titulo">Projetos</h2>
+        <!-- Título da seção de projetos -->
+        <div id="projetosContainer" class="grade-aulas"></div>
+        <!-- Container onde os projetos serão inseridos dinamicamente -->
+
+        <h2 class="titulo">Tarefas</h2>
+        <!-- Título da seção de tarefas -->
+        <div id="tarefasContainer" class="grade-aulas"></div>
+        <!-- Container onde as tarefas serão inseridas dinamicamente -->
+    </main>
+
+    <footer>
+        <!-- Rodapé da página -->
+        <p>&copy; 2025 Pedro Pinter, Murilo Mazotti, João Dias e Pedro Menezes. Todos os direitos reservados.</p>
+        <!-- Direitos autorais -->
+
+        <div class="redes-sociais">
+            <!-- Links para redes sociais com ícones -->
+            <a href="https://www.linkedin.com/in/pedro-henrique-pinter/"><img class="imglink" src="../assets/linkedin.png"></a>
+            <a href="https://github.com/pedropinter"><img class="imglink" src="../assets/whatsapp.png"></a>
+            <!-- OBS: Ícone do WhatsApp usado para link do GitHub, pode ser corrigido -->
+            <a href="https://www.instagram.com/phpinter/"><img class="imglink" src="../assets/instagram.png"></a>
+        </div>
+    </footer>
+
+    <script>
+    // Executa quando o conteúdo da página estiver totalmente carregado
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Projetos ---
+        // Obtém o array de projetos armazenados no localStorage, ou vazio se não existir
+        const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
+        const projetosContainer = document.getElementById('projetosContainer');
+
+        // Para cada projeto armazenado, cria uma div e adiciona informações
+        projetos.forEach((proj, index) => {
+            const div = document.createElement('div');
+            div.classList.add('aula');  // classe para estilização
+            div.style.backgroundColor = proj.cor || '#1976D2';  // cor personalizada ou padrão
+
+            div.innerHTML = `
+                <p class="titulo-aula">${proj.nome}</p>
+                <div class="exercicios">
+                    <p><strong>Descrição:</strong> ${proj.descricao}</p>
+                    <p><strong>Responsável:</strong> ${proj.responsavel}</p>
+                    <p><strong>Tipo:</strong> ${proj.tipo}</p>
+                    <p><strong>Status:</strong> ${proj.status}</p>
+                </div>
+                <button class="excluir-btn">Excluir Projeto</button>
+            `;
+
+            // Clique na div (exceto no botão excluir) alterna a classe 'ativa' para abrir/fechar detalhes
+            div.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('excluir-btn')) {
+                    div.classList.toggle('ativa');
+                }
+            });
+
+            // Clique no botão excluir remove o projeto do array e atualiza o localStorage, depois recarrega a página
+            div.querySelector('.excluir-btn').addEventListener('click', () => {
+                projetos.splice(index, 1);
+                localStorage.setItem('projetos', JSON.stringify(projetos));
+                location.reload();
+            });
+
+            projetosContainer.appendChild(div); // adiciona a div ao container
+        });
+
+        // --- Tarefas ---
+        // Obtém o array de tarefas armazenadas no localStorage, ou vazio se não existir
+        const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+        const tarefasContainer = document.getElementById('tarefasContainer');
+
+        // Para cada tarefa, cria uma div semelhante, com informações e botão excluir
+        tarefas.forEach((tarefa, index) => {
+            const tarefaDiv = document.createElement('div');
+            tarefaDiv.classList.add('aula', 'ativa'); // já aberta por padrão
+            tarefaDiv.style.backgroundColor = '#42A5F5'; // cor fixa para tarefas
+
+            tarefaDiv.innerHTML = `
+                <p class="titulo-aula">${tarefa.nome}</p>
+                <div class="exercicios">
+                    <p><strong>Descrição:</strong> ${tarefa.descricao}</p>
+                    <p><strong>Responsável:</strong> ${tarefa.responsavel}</p>
+                </div>
+                <button class="excluir-btn">Excluir Tarefa</button>
+            `;
+
+            // Botão excluir remove a tarefa e atualiza o armazenamento
+            tarefaDiv.querySelector('.excluir-btn').addEventListener('click', () => {
+                tarefas.splice(index, 1);
+                localStorage.setItem('tarefas', JSON.stringify(tarefas));
+                location.reload();
+            });
+
+            tarefasContainer.appendChild(tarefaDiv); // adiciona ao container
+        });
+    });
+    </script>
+
+</body>
+</html>

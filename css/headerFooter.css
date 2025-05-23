@@ -1,0 +1,85 @@
+/* Aplica estilo base para todos os elementos:
+   Remove margens e espaçamentos padrões,
+   define a fonte padrão para serifadas clássicas,
+   e adiciona uma transição suave de 0.5s para mudanças visuais */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: 0.5s;
+}
+
+/* Estiliza o corpo da página:
+   ocupa 100% da largura e altura disponíveis,
+   com fundo em um tom claro de azul (cyan claro) */
+body {
+    width: 100%;
+    height: 100%;
+    background: #E0F7FA;
+}
+
+/* Cabeçalho da página:
+   fundo azul (#1976D2),
+   usa flexbox para alinhar os itens no centro verticalmente
+   e distribuir espaço entre os elementos (logo e menu) */
+header {
+    background-color: #1976D2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilo dos links do menu:
+   remove sublinhado,
+   cor clara (#E0F7FA),
+   margem direita para espaçamento entre links,
+   padding para aumentar a área clicável,
+   bordas arredondadas para formato "pill" */
+.menu-opcoes {
+    text-decoration: none;
+    color: #E0F7FA;
+    margin-right: 10px;
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+
+/* Rodapé da página:
+   centraliza o texto,
+   aplica padding de 1% para espaçamento,
+   fundo azul igual ao cabeçalho,
+   texto em cor clara */
+footer {
+    text-align: center;
+    padding: 1%;
+    background-color: #1976D2;
+    color: #E0F7FA;
+}
+
+/* Container das redes sociais:
+   padding de 1% para espaçamento interno */
+.redes-sociais {
+    padding: 1%;
+}
+
+/* Imagens dos links sociais:
+   altura definida como 8% da altura da viewport (altura da janela) */
+.imglink {
+    height: 8vh;
+}
+
+/* Logo da página:
+   altura de 17% da altura da viewport,
+   desloca o logo 10% para a direita */
+#logo {
+    height: 17vh;
+    transform: translateX(10%);
+}
+
+/* Estilo do título principal (h1):
+   exibe como flex (provavelmente para alinhar conteúdo interno),
+   margem direita de 200 pixels (provavelmente para espaçamento,
+   embora o valor pareça incompleto, falta unidade 'px' ou outro) */
+h1 {
+    display: flex;
+    margin-right: 200;
+}

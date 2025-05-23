@@ -1,0 +1,112 @@
+/* Move o footer para baixo em 172% da sua própria altura,
+   provavelmente para "empurrar" ele para fora da tela ou posicionar visualmente */
+footer {
+    transform: translateY(172%);
+}
+
+/* Estilo para títulos com a classe 'titulo':
+   centraliza o texto,
+   define tamanho grande (2.5 rem),
+   cor preta,
+   margens verticais de 30px para espaçamento */
+.titulo {
+    text-align: center;
+    font-size: 2.5rem;
+    color: BLACK;
+    margin: 30px 0;
+}
+
+/* Container com layout em grade para aulas ou cartões:
+   usa grid com 4 colunas de tamanho igual (1fr cada),
+   espaçamento de 20px entre linhas e colunas,
+   padding interno lateral de 10% e vertical de 2%,
+   margem inferior para separar da próxima seção */
+.grade-aulas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 2% 10%;
+    margin-bottom: 40px;
+}
+
+/* Cartões individuais com a classe 'aula':
+   fundo azul (#1976D2),
+   padding interno de 20px,
+   cantos arredondados com 10px,
+   texto centralizado,
+   cursor muda para pointer para indicar clicável,
+   transição suave para mudanças de cor no fundo */
+.aula {
+    background-color: #1976D2;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Título dentro do cartão:
+   cor preta,
+   negrito,
+   tamanho de fonte médio (1.2 rem),
+   margem inferior para espaçamento do conteúdo seguinte */
+.titulo-aula {
+    color: BLACK;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Conteúdo oculto dentro do cartão, geralmente detalhes ou exercícios:
+   inicialmente escondido (display: none),
+   preparado para ser flexbox vertical com espaçamento entre itens,
+   margem superior para separação do título */
+.exercicios {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+/* Links dentro do conteúdo oculto:
+   cor preta,
+   sem sublinhado,
+   fonte menor (0.9 rem) */
+.exercicios a {
+    color: BLACK;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Quando o cartão possui a classe 'ativa':
+   o conteúdo oculto (exercicios) é exibido usando flexbox,
+   mostrando os detalhes */
+.aula.ativa .exercicios {
+    display: flex;
+}
+
+/* Botão para excluir, estilizado com:
+   margem superior para espaçamento,
+   padding para tamanho confortável,
+   texto preto,
+   sem borda,
+   cantos arredondados,
+   cursor pointer para indicar clicável,
+   transição para mudanças suaves de cor */
+.excluir-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efeito hover do botão excluir:
+   fundo preto,
+   texto branco */
+.excluir-btn:hover {
+    background-color: black;
+    color: white;
+}
